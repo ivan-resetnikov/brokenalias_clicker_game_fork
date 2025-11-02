@@ -1,0 +1,126 @@
+[gd_scene load_steps=13 format=3 uid="uid://bhcaqjlwlm27l"]
+
+[ext_resource type="Script" uid="uid://3blrchmex1di" path="res://control.gd" id="1_62e2m"]
+[ext_resource type="Texture2D" uid="uid://bfsskxkw2nv78" path="res://Sprites/ShopItem1.png" id="2_fj5cn"]
+[ext_resource type="Texture2D" uid="uid://b1fl1ld4alcma" path="res://Sprites/Layout.png" id="2_qtu10"]
+[ext_resource type="Texture2D" uid="uid://bbuia33unbq37" path="res://Sprites/Button1.png" id="3_ee4bf"]
+[ext_resource type="Texture2D" uid="uid://c54l32r6ixso7" path="res://Sprites/ShopItem2.png" id="3_iy58a"]
+[ext_resource type="Texture2D" uid="uid://0yxubvlpu7jc" path="res://Sprites/Button2.png" id="4_ee4bf"]
+[ext_resource type="BitMap" uid="uid://dyus7bx5c7pv" path="res://Sprites/ShopItemBitMap.png" id="4_iy58a"]
+[ext_resource type="Texture2D" uid="uid://0ateob37a2yq" path="res://Sprites/DashBoard.png" id="5_6a6wx"]
+[ext_resource type="Texture2D" uid="uid://d1djf82d43h80" path="res://Sprites/UpgradeSlot1.png" id="8_0ytqx"]
+[ext_resource type="Texture2D" uid="uid://c7odu3n136462" path="res://Sprites/UpgradeSlot2.png" id="9_pxugv"]
+
+[sub_resource type="SystemFont" id="SystemFont_ee4bf"]
+font_names = PackedStringArray("American Captain")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kbped"]
+font = SubResource("SystemFont_ee4bf")
+font_size = 131
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_62e2m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(240, 80)
+layout_mode = 2
+
+[node name="AutoClicker" type="TextureButton" parent="VBoxContainer/Control"]
+layout_mode = 0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("2_fj5cn")
+texture_pressed = ExtResource("3_iy58a")
+texture_click_mask = ExtResource("4_iy58a")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.5
+offset_right = 53.5
+offset_bottom = 132.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_kbped")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="DashBoard" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(1280, 240)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_6a6wx")
+
+[node name="ClickerButton" type="TextureButton" parent="DashBoard"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_ee4bf")
+texture_pressed = ExtResource("4_ee4bf")
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 27.335
+offset_top = 450.06
+offset_right = 131.11899
+offset_bottom = 466.727
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="UpgradeSlot" type="TextureButton" parent="HBoxContainer/Control"]
+layout_mode = 0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("8_0ytqx")
+texture_hover = ExtResource("9_pxugv")
+
+[node name="Layout" type="TextureRect" parent="."]
+modulate = Color(0.4249623, 0.4249623, 0.4249623, 0.8666667)
+texture_filter = 1
+layout_mode = 0
+texture = ExtResource("2_qtu10")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="DashBoard/ClickerButton" to="." method="_on_texture_button_pressed"]
