@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqlo3uw6nq02l"]
+
+[ext_resource type="Texture2D" uid="uid://bfsskxkw2nv78" path="res://Sprites/ShopItem1.png" id="1_cpvkt"]
+[ext_resource type="Script" uid="uid://dkr2ks01nmitr" path="res://scripts/components/upgrades_column_upgrade.gd" id="1_g6i5i"]
+[ext_resource type="Texture2D" uid="uid://c54l32r6ixso7" path="res://Sprites/ShopItem2.png" id="2_g6i5i"]
+[ext_resource type="BitMap" uid="uid://dyus7bx5c7pv" path="res://Sprites/ShopItemBitMap.png" id="3_jcjla"]
+
+[node name="UpgradesColumnUpgrade" type="Control"]
+custom_minimum_size = Vector2(240, 80)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_g6i5i")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_cpvkt")
+texture_pressed = ExtResource("2_g6i5i")
+texture_click_mask = ExtResource("3_jcjla")
+stretch_mode = 0

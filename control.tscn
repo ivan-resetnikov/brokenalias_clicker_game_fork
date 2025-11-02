@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://bhcaqjlwlm27l"]
 
 [ext_resource type="Script" uid="uid://3blrchmex1di" path="res://control.gd" id="1_62e2m"]
-[ext_resource type="Texture2D" uid="uid://bfsskxkw2nv78" path="res://Sprites/ShopItem1.png" id="2_fj5cn"]
+[ext_resource type="Script" uid="uid://48aq03wenq27" path="res://scripts/upgrades_column.gd" id="2_eh0v1"]
 [ext_resource type="Texture2D" uid="uid://b1fl1ld4alcma" path="res://Sprites/Layout.png" id="2_qtu10"]
+[ext_resource type="PackedScene" uid="uid://bqlo3uw6nq02l" path="res://scenes/components/upgrades_column_upgrade.tscn" id="3_0ytqx"]
 [ext_resource type="Texture2D" uid="uid://bbuia33unbq37" path="res://Sprites/Button1.png" id="3_ee4bf"]
-[ext_resource type="Texture2D" uid="uid://c54l32r6ixso7" path="res://Sprites/ShopItem2.png" id="3_iy58a"]
 [ext_resource type="Texture2D" uid="uid://0yxubvlpu7jc" path="res://Sprites/Button2.png" id="4_ee4bf"]
-[ext_resource type="BitMap" uid="uid://dyus7bx5c7pv" path="res://Sprites/ShopItemBitMap.png" id="4_iy58a"]
 [ext_resource type="Texture2D" uid="uid://0ateob37a2yq" path="res://Sprites/DashBoard.png" id="5_6a6wx"]
+[ext_resource type="PackedScene" uid="uid://7jmgerbkbou8" path="res://scenes/components/upgrades_column_popup.tscn" id="5_pxugv"]
 [ext_resource type="Texture2D" uid="uid://d1djf82d43h80" path="res://Sprites/UpgradeSlot1.png" id="8_0ytqx"]
 [ext_resource type="Texture2D" uid="uid://c7odu3n136462" path="res://Sprites/UpgradeSlot2.png" id="9_pxugv"]
 
@@ -27,29 +27,75 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_62e2m")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-texture_filter = 1
+[node name="UpgradesColumn" type="Control" parent="."]
+custom_minimum_size = Vector2(240, 0)
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -48.0
+offset_left = -605.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("2_eh0v1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradesColumn"]
+texture_filter = 1
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Control" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(240, 80)
+[node name="Upgrade0" parent="UpgradesColumn/VBoxContainer" instance=ExtResource("3_0ytqx")]
 layout_mode = 2
+title = "Upgrade 0"
+price = 10
+description = "Description for upgrade"
 
-[node name="AutoClicker" type="TextureButton" parent="VBoxContainer/Control"]
+[node name="Upgrade1" parent="UpgradesColumn/VBoxContainer" instance=ExtResource("3_0ytqx")]
+layout_mode = 2
+title = "Upgrade 1"
+price = 10
+description = "Description for upgrade"
+
+[node name="Upgrade2" parent="UpgradesColumn/VBoxContainer" instance=ExtResource("3_0ytqx")]
+layout_mode = 2
+title = "Upgrade 2"
+price = 10
+description = "Description for upgrade"
+
+[node name="Upgrade3" parent="UpgradesColumn/VBoxContainer" instance=ExtResource("3_0ytqx")]
+layout_mode = 2
+title = "Upgrade 3"
+price = 10
+description = "Description for upgrade"
+
+[node name="Upgrade4" parent="UpgradesColumn/VBoxContainer" instance=ExtResource("3_0ytqx")]
+layout_mode = 2
+title = "Upgrade 4"
+price = 10
+description = "Description for upgrade"
+
+[node name="Upgrade5" parent="UpgradesColumn/VBoxContainer" instance=ExtResource("3_0ytqx")]
+layout_mode = 2
+title = "Upgrade 5"
+price = 10
+description = "Description for upgrade"
+
+[node name="Upgrade6" parent="UpgradesColumn/VBoxContainer" instance=ExtResource("3_0ytqx")]
+layout_mode = 2
+title = "Upgrade 6"
+price = 10
+description = "Description for upgrade"
+
+[node name="UpgradesColumnPopup" parent="UpgradesColumn" instance=ExtResource("5_pxugv")]
 layout_mode = 0
-scale = Vector2(5, 5)
-texture_normal = ExtResource("2_fj5cn")
-texture_pressed = ExtResource("3_iy58a")
-texture_click_mask = ExtResource("4_iy58a")
-stretch_mode = 0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
