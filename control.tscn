@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhcaqjlwlm27l"]
+[gd_scene load_steps=27 format=3 uid="uid://bhcaqjlwlm27l"]
 
 [ext_resource type="Script" uid="uid://3blrchmex1di" path="res://control.gd" id="1_62e2m"]
 [ext_resource type="Script" uid="uid://48aq03wenq27" path="res://scripts/upgrades_column.gd" id="2_eh0v1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bbuia33unbq37" path="res://Sprites/Button1.png" id="3_ee4bf"]
 [ext_resource type="Texture2D" uid="uid://0yxubvlpu7jc" path="res://Sprites/Button2.png" id="4_ee4bf"]
 [ext_resource type="Texture2D" uid="uid://0ateob37a2yq" path="res://Sprites/DashBoard.png" id="5_6a6wx"]
+[ext_resource type="Texture2D" uid="uid://b6w7lq5vkg18o" path="res://Sprites/PowerDial/PowerDial.png" id="5_knq72"]
 [ext_resource type="PackedScene" uid="uid://7jmgerbkbou8" path="res://scenes/components/upgrades_column_popup.tscn" id="5_pxugv"]
 [ext_resource type="Texture2D" uid="uid://d1djf82d43h80" path="res://Sprites/UpgradeSlot1.png" id="8_0ytqx"]
 [ext_resource type="Texture2D" uid="uid://c7odu3n136462" path="res://Sprites/UpgradeSlot2.png" id="9_pxugv"]
@@ -21,6 +22,70 @@ font_names = PackedStringArray("American Captain")
 [sub_resource type="LabelSettings" id="LabelSettings_kbped"]
 font = SubResource("SystemFont_ee4bf")
 font_size = 131
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvdhi"]
+atlas = ExtResource("5_knq72")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq4si"]
+atlas = ExtResource("5_knq72")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4egf"]
+atlas = ExtResource("5_knq72")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi4e7"]
+atlas = ExtResource("5_knq72")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuuv8"]
+atlas = ExtResource("5_knq72")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou021"]
+atlas = ExtResource("5_knq72")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fl80"]
+atlas = ExtResource("5_knq72")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jbwv"]
+atlas = ExtResource("5_knq72")
+region = Rect2(336, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v61lp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvdhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq4si")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4egf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pi4e7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kuuv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou021")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fl80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jbwv")
+}],
+"loop": true,
+"name": &"PowerDialAnim",
+"speed": 5.0
+}]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -116,6 +181,28 @@ horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="PowerDialControl" type="Control" parent="."]
+custom_minimum_size = Vector2(236.39, 158.785)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 485.0
+offset_top = 105.0
+offset_right = 725.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PowerDialControl"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_v61lp")
+animation = &"PowerDialAnim"
+frame_progress = 0.75467974
+centered = false
 
 [node name="DashBoard" type="TextureRect" parent="."]
 texture_filter = 1
